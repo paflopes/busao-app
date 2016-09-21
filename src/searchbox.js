@@ -1,5 +1,5 @@
-import React, {Component, PropTypes} from 'react';
 import {View, TextInput, StyleSheet} from 'react-native';
+import React, {Component, PropTypes} from 'react';
 
 import Style from './stylesheet';
 
@@ -22,7 +22,14 @@ export default class SearchBox extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput style={styles.searchbox} onFocus={() => this.textFocused()}>{this.state.placeholder}</TextInput>
+        <TextInput
+          style={styles.searchbox}
+          maxLength = {40}
+          underlineColorAndroid={Style.GRAY}
+          onFocus={() => this.textFocused()}
+        >
+          {this.state.placeholder}
+        </TextInput>
       </View>
     );
   }
@@ -30,7 +37,7 @@ export default class SearchBox extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.2,
+    flex: 0.3,
     justifyContent: 'center'
   },
   searchbox: {

@@ -42,4 +42,8 @@ export default {
   FONT_SIZE_SMALL: em(0.875),
   FONT_SIZE_TITLE: em(1.25),
 
+  // COLOR
+  GRAY: '#EFEFF2',
+  WHITE: 'white'
+
 };
