@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, ListView, View, Dimensions} from 'react-native';
+import {Text, ListView, StyleSheet} from 'react-native';
 import linhas from '../linhas.json';
 
 export default class LinhasList extends Component {
@@ -15,15 +15,17 @@ export default class LinhasList extends Component {
   }
 
   render() {
-    const {height} = Dimensions.get('window');
-
     return (
         <ListView
-          style={{flex: 1}}
+          style={styles.mainList}
           dataSource={this.state.dataSource}
           renderRow={(rowData) => <Text>{rowData}</Text>}/>
     );
   }
 }
 
-// LinhasList.propTypes = {   linhas: PropTypes.array };
+const styles = StyleSheet.create({
+  mainList: {
+    flex: 1
+  }
+});
