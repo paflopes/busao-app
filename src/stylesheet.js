@@ -44,6 +44,7 @@ export default {
 
   // COLOR
   GRAY: '#EFEFF2',
+  GRAY_DARKER: '#A9A9AB',
   WHITE: 'white'
 
 };

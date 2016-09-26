@@ -1,5 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {Actions} from 'react-native-router-flux';
+
 
 import Style from './stylesheet';
 
@@ -10,9 +12,14 @@ export default class Linha extends Component {
 
   render() {
     const {numero, nome} = this.props.data;
+    const detail = () => Actions.detail({
+      title: `${numero} - Itinerário`,
+      data: this.props.data
+    });
+
     return (
       <View style={styles.container}>
-        <Text>{numero} | {nome}</Text>
+        <Text onPress={detail}>{numero} | {nome}</Text>
       </View>
     );
   }
@@ -25,8 +32,6 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: Style.GRAY,
     paddingLeft: Style.UNIT
-    // borderWidth: 2,
-    // borderColor: 'black',
   }
 });
 
