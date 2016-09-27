@@ -1,16 +1,18 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {ListView, StyleSheet, View} from 'react-native';
 
 import Style from './stylesheet';
 import Linha from './linha';
-import linhas from '../linhas.json';
 
 export default class LinhasList extends Component {
   constructor(props) {
     super(props);
+
+    const {linhas} = this.props;
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
+
     this.state = {
       dataSource: ds.cloneWithRows(linhas.map((e) => {
         e.key = e.numero;
@@ -43,3 +45,6 @@ const styles = StyleSheet.create({
     backgroundColor: Style.WHITE
   }
 });
+
+LinhasList.propTypes = {linhas: PropTypes.array};
+LinhasList.defaultProps = {linhas: []};
