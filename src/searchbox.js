@@ -12,7 +12,7 @@ export default class SearchBox extends Component {
       placeholder: props.placeholder
     };
 
-    this.textFocused.bind(this);
+    this.textFocused = this.textFocused.bind(this);
   }
 
   textFocused() {
@@ -20,6 +20,7 @@ export default class SearchBox extends Component {
   }
 
   render() {
+    const {updateLinhas} = this.props;
     return (
       <View style={styles.container}>
         <TextInput
@@ -27,6 +28,7 @@ export default class SearchBox extends Component {
           maxLength = {40}
           underlineColorAndroid={Style.GRAY}
           onFocus={() => this.textFocused()}
+          onChangeText={text => updateLinhas(text)}
         >
           {this.state.placeholder}
         </TextInput>
@@ -47,7 +49,8 @@ const styles = StyleSheet.create({
 
 
 SearchBox.propTypes = {
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  updateLinhas: PropTypes.func.isRequired
 };
 
 SearchBox.defaultProps = {placeholder: 'nome da rua, terminal...'};

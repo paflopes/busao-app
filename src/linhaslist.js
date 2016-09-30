@@ -14,12 +14,17 @@ export default class LinhasList extends Component {
     });
 
     this.state = {
-      dataSource: ds.cloneWithRows(linhas.map((e) => {
-        e.key = e.numero;
-        return e;
-      }))
+      dataSource: ds.cloneWithRows(linhas)
     };
+  }
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.linhas !== this.props.linhas) {
+      this.setState({
+        linhas: nextProps.linhas,
+        dataSource: this.state.dataSource.cloneWithRows(nextProps.linhas)
+      });
+    }
   }
 
   render() {
@@ -29,6 +34,7 @@ export default class LinhasList extends Component {
           style={styles.mainList}
           dataSource={this.state.dataSource}
           renderRow={(rowData) => <Linha data={rowData} />}
+          enableEmptySections={true}
           renderSeparator={(sectionID, rowID) => <View key={`${sectionID}-${rowID}`} style={styles.separator} />}
         />
     );
