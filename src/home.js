@@ -29,7 +29,7 @@ export default class Home extends Component {
     return (
       <View style={styles.container} refreshing>
         <SearchBox updateLinhas={this.updateLinhas} />
-        <LinhasList linhas={this.state.linhas} />
+        <LinhasList />
       </View>
     );
   }

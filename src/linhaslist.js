@@ -1,10 +1,11 @@
 import React, {Component, PropTypes} from 'react';
 import {ListView, StyleSheet, View} from 'react-native';
+import {connect} from 'react-redux';
 
 import Style from './stylesheet';
 import Linha from './linha';
 
-export default class LinhasList extends Component {
+class LinhasList extends Component {
   constructor(props) {
     super(props);
 
@@ -54,3 +55,11 @@ const styles = StyleSheet.create({
 
 LinhasList.propTypes = {linhas: PropTypes.array};
 LinhasList.defaultProps = {linhas: []};
+
+export default connect(
+  (state) => {
+    return {
+      linhas: state.linhas
+    };
+  }
+)(LinhasList);
