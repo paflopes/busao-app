@@ -1,9 +1,12 @@
 import {View, TextInput, StyleSheet} from 'react-native';
 import React, {Component, PropTypes} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {searchLinhas} from './actions';
 
 import Style from './stylesheet';
 
-export default class SearchBox extends Component {
+class SearchBox extends Component {
 
   constructor(props) {
     super(props);
@@ -20,7 +23,6 @@ export default class SearchBox extends Component {
   }
 
   render() {
-    const {updateLinhas} = this.props;
     return (
       <View style={styles.container}>
         <TextInput
@@ -28,7 +30,7 @@ export default class SearchBox extends Component {
           maxLength = {40}
           underlineColorAndroid={Style.GRAY}
           onFocus={() => this.textFocused()}
-          onChangeText={text => updateLinhas(text)}
+          onChangeText={text => this.props.searchLinhas(text)}
         >
           {this.state.placeholder}
         </TextInput>
@@ -50,7 +52,13 @@ const styles = StyleSheet.create({
 
 SearchBox.propTypes = {
   placeholder: PropTypes.string,
-  updateLinhas: PropTypes.func.isRequired
+  searchLinhas: PropTypes.func
 };
 
 SearchBox.defaultProps = {placeholder: 'nome da rua, terminal...'};
+
+export default connect(
+  null,
+  (dispatch) =>
+    bindActionCreators({searchLinhas}, dispatch)
+)(SearchBox);
