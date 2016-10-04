@@ -14,8 +14,12 @@ export default class App extends Component {
       <Provider store={store}>
         <Router>
           <Scene key="root">
-            <Scene key="home" component={Home} initial={true} title="Busão"/>
-            <Scene key="detail" component={Detail} initial={false} title="Itinerário"/>
+            <Scene key="home" component={Home} initial={true}
+            title="Busão"
+            rightTitle="Atualizar"
+            onRight={() => {}}
+            />
+            <Scene key="detail" component={Detail} initial={false} title="Itinerário" />
           </Scene>
         </Router>
       </Provider>
