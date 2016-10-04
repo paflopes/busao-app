@@ -3,7 +3,7 @@ import {StyleSheet, View, Text, ScrollView} from 'react-native';
 
 import Style from './stylesheet';
 
-export default class Detail extends React.Component {
+export default class Itinerario extends React.Component {
 
   constructor(props) {
     super(props);
@@ -55,6 +55,6 @@ const styles = StyleSheet.create({
 });
 
 
-Detail.propTypes = {
+Itinerario.propTypes = {
   data: PropTypes.object
 };

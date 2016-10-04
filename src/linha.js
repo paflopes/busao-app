@@ -12,14 +12,14 @@ export default class Linha extends Component {
 
   render() {
     const {numero, nome} = this.props.data;
-    const detail = () => Actions.detail({
+    const itinerario = () => Actions.itinerario({
       title: `${numero} - Itinerário`,
       data: this.props.data
     });
 
     return (
       <View style={styles.container}>
-        <Text onPress={detail}>{numero} | {nome}</Text>
+        <Text onPress={itinerario}>{numero} | {nome}</Text>
       </View>
     );
   }

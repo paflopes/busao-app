@@ -3,7 +3,7 @@ import {Scene, Router} from 'react-native-router-flux';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import Home from './home';
-import Detail from './detail';
+import Itinerario from './itinerario';
 import allReducers from './reducers';
 
 const store = createStore(allReducers);
@@ -19,7 +19,7 @@ export default class App extends Component {
             rightTitle="Atualizar"
             onRight={() => {}}
             />
-            <Scene key="detail" component={Detail} initial={false} title="Itinerário" />
+            <Scene key="itinerario" component={Itinerario} initial={false} title="Itinerário" />
           </Scene>
         </Router>
       </Provider>
