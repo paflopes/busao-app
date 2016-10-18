@@ -23,6 +23,7 @@ class SearchBox extends Component {
   }
 
   render() {
+    let text = '';
     return (
       <View style={styles.container}>
         <TextInput
@@ -30,7 +31,9 @@ class SearchBox extends Component {
           maxLength = {40}
           underlineColorAndroid={Style.GRAY}
           onFocus={() => this.textFocused()}
-          onChangeText={text => this.props.searchLinhas(text)}
+          onChangeText={t => text = t}
+          onEndEditing={() => this.props.searchLinhas(text)}
+          onSubmitEditing={() => this.props.searchLinhas(text)}
         >
           {this.state.placeholder}
         </TextInput>
